@@ -11,18 +11,19 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .container {
-  width: 1170px;
+  width: 100%;
+  max-width: 1170px;
   margin: 0 auto;
 }
-
 
 /*************
 *   HOME
 *************/
+
 .home {
   position: relative;
   background-size: cover;
@@ -70,7 +71,17 @@ body {
   margin: 0 30px;
 }
 
+@media screen and (max-width: 768px) {
+  .home .header .nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 
+  .home .header .nav ul li {
+    width: auto;
+    margin-bottom: 10px;
+  }
+}
 
 /*****************
 *  HOME - BANNER
@@ -79,10 +90,11 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
+  transform: translate(-50%, -50%);
   height: 270px;
   width: 770px;
-  margin-left: -385px;
-  margin-top: -75px;
+  max-width: 100%;
+  margin: 0 auto;
 
   color: white;
   text-align: center;
@@ -109,26 +121,33 @@ body {
   font-weight: bold;
 }
 
-
-
 /***********
 *  ABOUT
 ************/
+
 .about {
   background-color: var(--color-primary);
+  padding: 100px 0;
+  text-align: center;
 }
 
 .about .container {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .about .timing {
-  position: relative;
-  top: -50px;
-  width: 33%;
+  flex-basis: calc(50% - 15px);
+  max-width: 300px;
+  margin-bottom: 50px;
   padding: 20px;
-  background-image: url(../images/dog_bg.png);
-}
+  background-image: url(../images/dog_about.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: left;
+  }
 
 .about .timing .overlay {
   background: rgba(0, 0, 0, 0.8);
@@ -139,7 +158,6 @@ body {
 .about .timing .icon-cut {
   width: 50px;
 }
-
 
 .about .timing h3 {
   color: var(--color-primary);
@@ -155,7 +173,7 @@ body {
 }
 
 .about .timing .text:after {
-  content: '•';
+  content: "•";
   display: block;
   font-size: 25px;
   color: white;
@@ -163,7 +181,7 @@ body {
 }
 
 .about .timing .text:last-of-type:after {
-  content: '|';
+  content: "|";
 }
 
 .about .timing .text h4 {
@@ -178,12 +196,12 @@ body {
   display: block;
 }
 
-
 .about .experience {
-  width: 66%;
+  flex-basis: calc(50% - 30px);
+  max-width: 600px;
   color: white;
-  margin-left: 7%;
-  margin-top: 100px;
+  margin-bottom: 50px;
+  text-align: center;
 }
 
 .about .experience h2 {
@@ -193,30 +211,31 @@ body {
 
 .about .experience h2:after {
   display: block;
-  content: '';
+  content: "";
   width: 100px;
   height: 3px;
   background-color: #a38f78;
-  margin: 20px 0;
+  margin: 20px auto;
 }
 
 .about .experience .text {
-  display: flex;
-  justify-content: space-between;
-}
-
-
-.about .experience .text p {
   margin-bottom: 20px;
   font-weight: 100;
   font-size: 17px;
 }
 
-
+@media screen and (max-width: 768px) {
+  .about .timing,
+  .about .experience {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+}
 
 /***********
 * reports
 ************/
+
 .reports {
   padding: 100px 0;
   text-align: center;
@@ -232,7 +251,8 @@ body {
 
 .reports .boxes {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
   margin-top: 50px;
 }
 
@@ -240,6 +260,7 @@ body {
   border: 3px solid var(--color-primary);
   padding: 50px 40px;
   margin: 30px;
+  flex-basis: 300px; /* Largura base dos boxes */
 }
 
 .reports .box h4 {
@@ -253,7 +274,16 @@ body {
   line-height: 25px;
 }
 
+@media screen and (max-width: 768px) {
+  .reports .boxes {
+    flex-direction: column;
+    align-items: center;
+  }
 
+  .reports .box {
+    margin: 15px;
+  }
+}
 
 /**************
 * APPOINTMENT
@@ -261,11 +291,15 @@ body {
 .appointment {
   padding: 100px 0;
   background-color: var(--color-primary);
-  height: 100vh;
   background-image: url(../images/dog_contact.png);
   background-repeat: no-repeat;
   background-position: right bottom;
   background-size: 300px;
+}
+
+.appointment {
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .appointment h2 {
@@ -281,24 +315,20 @@ body {
   display: block;
 }
 
-
 .appointment form {
   margin-top: 80px;
 }
 
 .appointment .personal-data {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   margin-bottom: 20px;
 }
 
 .appointment .input-wrapper {
   width: 100%;
-  margin-right: 50px;
-}
-
-.appointment .input-wrapper:last-of-type {
-  margin-right: 0;
+  margin-bottom: 20px;
 }
 
 .appointment label {
@@ -332,10 +362,13 @@ body {
   font-weight: bold;
 }
 
+@media screen and (max-width: 768px) {
+  .appointment {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
 
-/**************
-* GALLERY
-***************/
 .gallery {
   padding: 100px 0;
   background-color: var(--color-primary-light);
@@ -349,35 +382,44 @@ body {
   text-align: center;
 }
 
-.gallery img {
-  margin: 0 auto;
-  display: block;
-}
-
 .gallery .gallery-wrapper {
   display: flex;
-  flex-direction: column;
   flex-wrap: wrap;
-  width: 900px;
-  height: 100vh;
+  justify-content: center;
+  max-width: 900px;
   margin: 50px auto;
 }
 
 .gallery .gallery-wrapper div {
-  border: 2px solid var(--color-primary);
-  margin: 6px;
-  width: 33%;
+  width: 33.33%;
+  padding: 6px;
+  box-sizing: border-box;
 }
 
 .gallery .gallery-wrapper div img {
   width: 100%;
+  height: 200px;
+  border: 2px solid var(--color-primary);
+  object-fit: cover;
 }
 
+.img-gallery {
+  display: block;
+  margin: 0 auto;
+}
 
+@media screen and (max-width: 768px) {
+  .gallery .gallery-wrapper div {
+    width: calc(50% - 12px);
+  }
+}
 
-/**************
-* LOCATION
-***************/
+@media screen and (max-width: 480px) {
+  .gallery .gallery-wrapper div {
+    width: calc(100% - 12px);
+  }
+}
+
 .location {
   padding: 100px 0;
   background: url(../images/dog_bg.jpg);
@@ -386,10 +428,10 @@ body {
 
 .location .head {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   background-color: #191919;
   padding: 40px;
-  width: 100%;;
 }
 
 .location .head .info {
@@ -430,15 +472,14 @@ body {
   width: 100%;
 }
 
-
-
-/*********
-* FOOTER
-**********/
 .footer {
   background-color: #191919;
   color: white;
   padding: 40px;
   text-align: center;
   font-size: 12px;
+}
+
+.experience .text{
+  margin-bottom: 20px;
 }
